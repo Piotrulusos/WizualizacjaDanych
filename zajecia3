@@ -1,0 +1,150 @@
+import math
+
+# zad1
+zad1 = math.e ** 10 / (math.log(5 + (math.sin(8)) ** 2))
+print(zad1)
+
+print(math.floor(3.55))
+print(math.ceil(4.80))
+
+# zad2
+
+imie = 'PIOTR'
+nazwisko = 'KOWALCZYK'
+print(imie.capitalize() + ' ' + nazwisko.capitalize())
+
+# zad3
+
+tekst_piosenki = 'Did I really just forget that melody? Nah, da da dadadada nananana Alright, da da dadadada'
+print(tekst_piosenki.count('da'))
+
+# zad4
+
+text = "Hello world!"
+second_char = text[1]
+last_char = text[-1]
+
+print("Drugi znak to:", second_char)
+print("Ostatni znak to:", last_char)
+
+# zad6
+
+string_variable = "Hello, World!"
+float_variable = 3.14159265359
+hex_variable = 0x1a
+
+print("Zmienna string: {}".format(string_variable))
+print("Zmienna float: {:.2f}".format(float_variable))
+print("Zmienna szesnastkowa: 0x{:X}".format(hex_variable))
+
+# zad5
+
+print(string_variable.split())
+
+# zad7
+
+# Tworzenie listy ulubionych sportów
+ulubione_sporty = ['piłka nożna', 'boks', 'judo', 'karate']
+
+# Odwrócenie listy ulubionych sportów
+odwrocona_lista = ulubione_sporty[::-1]
+
+# Tworzenie listy mniej lubianych sportów
+mniej_lubiane_sporty = ['siatkówka', 'koszykówka']
+
+# Dodanie mniej lubianych sportów na koniec listy ulubionych sportów
+odwrocona_lista.extend(mniej_lubiane_sporty)
+
+# Wyświetlenie listy ulubionych sportów z mniej lubianymi sportami na końcu
+print(odwrocona_lista)
+
+# zad8
+
+# Tworzenie słownika skrótów
+skroty = {
+    "np.": "na przykład",
+    "itd.": "i tym podobne",
+    "itp.": "i tak dalej",
+    "tj.": "to jest",
+    "wg": "według",
+    "cdn.": "ciąg dalszy nastąpi",
+    "red.": "redaktor",
+    "nr": "numer",
+    "tel.": "telefon",
+    "fax": "faks",
+}
+
+# Wyświetlenie całego słownika
+print(skroty)
+
+# Wyświetlenie rozwinięcia skrótu "np."
+print("Skrót \"np.\" oznacza: " + skroty["np."])
+
+# zad9
+
+# Tworzenie słownika ulubionych gier komputerowych
+gry = {
+    'Wiedźmin 3': 'gra fabularna',
+    'Counter-Strike: Global Offensive': 'strzelanka',
+    'Minecraft': 'gra w budowanie',
+    'League of Legends': 'moba',
+    'Red Dead Redemption 2': 'gra akcji'
+}
+
+# Wyświetlenie słownika
+print(gry)
+
+# Policzenie liczby elementów w słowniku
+ilosc_gier = len(gry)
+print('Liczba ulubionych gier komputerowych:', ilosc_gier)
+
+# zad10
+
+# Pobranie zdania od użytkownika
+zdanie = input("Wpisz zdanie: ")
+
+# Inicjalizacja zmiennej do przechowywania liczby wystąpień litery 'a'
+liczba_wystapien = 0
+
+# Iteracja po każdym znaku w zdaniu i sprawdzenie, czy jest to litera 'a'
+for litera in zdanie:
+    if litera == 'a':
+        liczba_wystapien += 1
+
+# Wyświetlenie wyniku
+print("Liczba wystąpień litery 'a':", liczba_wystapien)
+
+# zad11
+
+a = int(input("Podaj pierwszą liczbę całkowitą: "))
+b = int(input("Podaj drugą liczbę całkowitą: "))
+c = int(input("Podaj trzecią liczbę całkowitą: "))
+
+if a > b and a > c:
+    print("Największa liczba to:", a)
+elif b > a and b > c:
+    print("Największa liczba to:", b)
+else:
+    print("Największa liczba to:", c)
+
+# zad12
+
+numbers = [2, 4.5, 3, 1.5, 6]
+
+for i in range(len(numbers)):
+    numbers[i] = numbers[i] ** 2
+
+print(numbers)
+
+# zad13
+
+numbers = []
+count = 0
+
+while count < 10:
+    num = int(input("Podaj liczbę: "))
+    if num % 2 == 0:
+        numbers.append(num)
+    count += 1
+
+print("Parzyste liczby to:", numbers)
