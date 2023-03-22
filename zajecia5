@@ -1,0 +1,105 @@
+# zad 1
+import random
+
+# wygeneruj 10 liczb z przedziału <0,30>
+numbers = [random.randint(0, 30) for _ in range(10)]
+
+# pomnóż liczby przez 2
+numbers_times_two = [num * 2 for num in numbers]
+
+# otwórz plik w trybie zapisu
+with open('numbers.txt', 'w') as file:
+    # zapisz każdą liczbę w osobnej linii
+    for num in numbers_times_two:
+        file.write(str(num) + '\n')
+
+# zad 2
+with open('numbers.txt', 'r', encoding='utf8') as plik:
+    for linia in plik:
+        print(linia,end='')
+print('\n')
+
+# zad 3
+with open('text.txt', 'w') as file:
+    file.write('To jest pierwsza linijka tekstu.\n')
+    file.write('To jest druga linijka tekstu.\n')
+    file.write('A to jest trzecia linijka tekstu.\n')
+
+with open('text.txt', 'r') as file:
+    print(file.read())
+print('\n')
+
+# zad 4
+class NaZakupy:
+    def __init__(self, nazwa_produktu, ilosc, jednostka_miary, cena_jed):
+        self.nazwa_produktu = nazwa_produktu
+        self.ilosc = ilosc
+        self.jednostka_miary = jednostka_miary
+        self.cena_jed = cena_jed
+
+    def wyswietl_produkt(self):
+        print("Nazwa produktu: {}\nIlość: {} {}\nCena za jednostkę: {} zł".format(
+            self.nazwa_produktu, self.ilosc, self.jednostka_miary, self.cena_jed))
+
+    def ile_produktu(self):
+        return "{} {}".format(self.ilosc, self.jednostka_miary)
+
+    def ile_kosztuje(self):
+        return self.ilosc * self.cena_jed
+ziemniaki = NaZakupy("ziemniaki", 3, "kg", 2)
+ziemniaki.wyswietl_produkt()
+print("Ilość produktu: ", ziemniaki.ile_produktu())
+print("Koszt produktu: ", ziemniaki.ile_kosztuje(), "zł")
+print('\n')
+
+# zad 5
+class CiagArytmetyczny:
+    def __init__(self):
+        self.elementy = []
+
+    def wyświetl_dane(self):
+        print(self.elementy)
+
+    def pobierz_elementy(self):
+        ilość = int(input("Podaj ilość elementów ciągu: "))
+        self.elementy = []
+        for i in range(ilość):
+            element = float(input(f"Podaj {i+1}. element ciągu: "))
+            self.elementy.append(element)
+
+    def pobierz_parametry(self):
+        a = float(input("Podaj pierwszą wartość ciągu: "))
+        r = float(input("Podaj różnicę ciągu: "))
+        n = int(input("Podaj ilość elementów ciągu: "))
+        self.elementy = [a + i*r for i in range(n)]
+
+    def policz_sume(self):
+        return sum(self.elementy)
+
+    def policz_elementy(self):
+        a = float(input("Podaj pierwszą wartość ciągu: "))
+        r = float(input("Podaj różnicę ciągu: "))
+        n = int(input("Podaj ilość elementów ciągu: "))
+        elementy = [a + i*r for i in range(n)]
+        return len(elementy)
+
+ciag = CiagArytmetyczny()
+
+ciag.pobierz_parametry()
+ciag.wyświetl_dane()
+# output: [pierwsza_wartość, pierwsza_wartość + różnica, ..., ostatnia_wartość]
+
+suma = ciag.policz_sume()
+print(f"Suma elementów ciągu: {suma}")
+
+liczba_elementów = ciag.policz_elementy()
+print(f"Liczba elementów ciągu: {liczba_elementów}")
+
+ciag.pobierz_elementy()
+ciag.wyświetl_dane()
+# output: [element_1, element_2, ..., element_n]
+
+# zad 6
+
+
+
