@@ -1,0 +1,136 @@
+# Przykład 1
+plik = open('tekst.txt', 'r', encoding = 'utf8')
+# odczyt 10 znaków
+znaki = plik.read(10)
+# odczyt jednej lini z pliku
+linia = plik.readline()
+# odczyt wierszy z pliku
+wiersze = plik.readlines()
+# zamknięcie pliku
+plik.close()
+# drukujemy 10 znaków
+print(znaki)
+print('\n')
+# drukujemy linie
+print(linia)
+print('\n')
+# drukujemy wiersze
+print(wiersze)
+
+# Przykład 2
+# odczyt danych ze standardowego wyjścia
+dane = input('Podaj kierunek studiów, rok i specjalność')
+# otwarcie pliku
+plik = open('dane.txt', 'w+')
+# zapisanie do pliku
+plik.write(dane)
+# tworzymy listę
+lista = []
+for x in range(6):
+    lista += [x]
+# otwarcie pliku do dopisania
+plik = open('dane.txt', 'a+')
+# zapisujemy
+plik.writelines(str(lista))
+# zamknięcie pliku
+plik.close()
+
+# Przykład 3
+with open('tekst.txt', 'r', encoding='utf8') as plik:
+    for linia in plik:
+        print(linia,end='')
+
+# Przykład 4
+class PierwszaKlasa:
+    '''Pierwsza klasa python''' # składnia opisowa, opis tego co jest umieszczone w klasie
+
+obiekt = PierwszaKlasa()
+print(obiekt)
+
+# Przykład 5
+class PierwszaKlasa:
+    '''Pierwsza klasa python'''
+    atrybut = 54321
+
+obiekt = PierwszaKlasa()
+print(obiekt)
+print(obiekt.atrybut)
+
+# Przykład 6
+class PierwszaKlasa:
+    '''Przykład klasy'''
+    atrybut = 54321
+    def pierwsza_metoda(self):
+        return 'Teraz działa pierwsza Metoda'
+obiekt = PierwszaKlasa()
+print(obiekt)
+print(obiekt.atrybut)
+print(obiekt.pierwsza_metoda())
+
+# Przykład 7
+class PierwszaKlasa:
+    '''Przykład klasy'''
+    atrybut = 54321
+    def pierwsza_metoda(self):
+        return 'Pierwsza metoda'
+obiekt = PierwszaKlasa()
+print(obiekt)
+# drukujemy atrybut
+print(obiekt.atrybut)
+# drukujemy metodę
+print(obiekt.pierwsza_metoda())
+# dodajemy atrybut do istniejącego obiektu
+obiekt.tekst = 'la la la'
+print(obiekt.tekst)
+# ale go nie będzie w nowej instancji klasy
+nowy_obiekt = PierwszaKlasa()
+# print(nowy_obiekt.tekst)
+# Traceback (most recent call last):
+#   File "C:\Users\GATTOR\PycharmProjects\pythonProject\main.py", line 87, in <module>
+#     print(nowy_obiekt.tekst)
+#           ^^^^^^^^^^^^^^^^^
+# AttributeError: 'PierwszaKlasa' object has no attribute 'tekst'
+
+# Przykład 8 i 9
+class Ksztalty:
+    # definicja konstruktora
+    def __init__(self, x, y):
+        # deklarujemy atrybuty
+        # self wkazuje że chodzi o zmienne właśnie definiowanie klasy
+        self.x=x
+        self.y=y
+        self.opis = 'To będzie klasa dla ogólnych kształtów'
+    def pole(self):
+        return self.x * self.y
+    def obwod(self):
+        return 2 * self.x + 2 * self.y
+    def dodaj_opis(self, text):
+        self.opis = text
+    def skalowanie(self, czynnik):
+        self.x = self.x * czynnik
+        self.y = self.y * czynnik
+    # Jakaś funkcja
+    def zmieniam_tekst(self, tekst):
+        tekst += ' to jest to ;'
+        return tekst
+
+# Tworzymy obiekt
+prostokat = Ksztalty(10,30)
+# Sprawdzamy jak działają metody które zwracają wartości
+print(prostokat.pole())
+print(prostokat.obwod())
+# sprawdzamy jak działają metody, które nie zwracają wartości
+prostokat.dodaj_opis('Prostokąt')
+print(prostokat.opis)
+prostokat.skalowanie(0.5)
+print(prostokat.x)
+print(prostokat.y)
+# Sprawdzamy dostęp do zmiennej prywatnej
+print(prostokat.__jestem_prywatna__)
+
+# a może uda nam się jescze zmienić wartość?
+prostokat.__jestem_prywatna__ = 'na na na'
+print(prostokat.__jestem_prywatna__)
+
+# spróbujmy czy nowa funkcja coś może zmienić
+print(prostokat.zmieniam_tekst(prostokat.__jestem_prywatna__))
