@@ -1,0 +1,74 @@
+# Napisz skrypt, który od użytkownika z konsoli pobiera trzy liczby
+# całkowite a, b. Program ma wykonać działanie a^2 + ab + b^2
+# Dokonaj zapisu wyniku do pliku o nazwie zadanie1.txt. W skrypcie dokonaj
+# sprawdzenia błędów związanych z wczytywanymi wartościami,
+# do tego celu użyj składni try-except.
+
+try:
+    a = int(input("Podaj pierwszą liczbę całkowitą: "))
+    b = int(input("Podaj drugą liczbę całkowitą: "))
+    c = int(input("Podaj trzecią liczbę całkowitą: "))
+
+    result = a ** 2 + a * b + b ** 2
+
+    with open('zadanie1.txt', 'w') as file:
+        file.write(str(result))
+        print("Wynik został zapisany do pliku zadanie1.txt")
+
+except ValueError:
+    print("Błąd: Podane wartości nie są liczbami całkowitymi")
+
+
+# Napisz funkcje, która jako argumenty przyjmuje dwie listy
+# z liczbami całkowitymi. Zadaniem funkcji jest
+# utworzenie i zwrócenie nowej listy składającej się z
+# sumy poszczególnych elementów z wejściowych liczb.
+
+def sum_lists(list1, list2):
+    result = []
+    for i in range(min(len(list1), len(list2))):
+        result.append(list1[i] + list2[i])
+    return result
+
+
+# Dany jest plik tekst.txt. Dokonaj wczytania pliku
+# wraz z obsługą polskich znaków oraz zapisz do zmiennej znaki, 35 znaków z tekstu
+# zaczynając od 100 znaku tekstu. Następnie wyświetl duże litery z wczytanego fragmentu
+# oraz ich ilość, jeśli ich nie będzie wyświetl odpowiedni komunikat.
+
+# otwórz plik tekst.txt z obsługą polskich znaków
+with open("tekst.txt", encoding="utf-8") as file:
+    # wczytaj cały tekst z pliku
+    tekst = file.read()
+
+    # wybierz 35 znaków zaczynając od 100-tego znaku tekstu
+    fragment = tekst[100:135]
+
+    # wyświetl duże litery z fragmentu oraz ich ilość
+    duze_litery = [znak for znak in fragment if znak.isupper()]
+    if duze_litery:
+        print("Duże litery w fragmencie:", duze_litery)
+        print("Liczba dużych liter:", len(duze_litery))
+    else:
+        print("W fragmencie nie ma dużych liter.")
+
+# Napisz skrypt, w którym utworzysz listę z liczbami całkowitymi
+# oraz zmienną ajako liczbę, a następnie za pomocą python comprehension
+# utwórz nową listę, która będzie zawierała tylko elementy z pierwszej listy większe od a.
+
+
+# Tworzenie listy z liczbami całkowitymi oraz zmiennej a
+lista = [1, 5, 3, 8, 6, 2, 4]
+a = 4
+
+# Utworzenie nowej listy za pomocą python comprehension
+nowa_lista = [liczba for liczba in lista if liczba > a]
+
+# Wyświetlenie wyniku
+print(nowa_lista)  # [5, 8, 6]
+
+# zad5
+import math
+
+zad5 = math.pow(math.e ** 3 + (math.cos(39) ** 2), 1 / 5) + math.pow(2 / 7, 3) + math.pi
+print(round(zad5, 2))
