@@ -36,4 +36,44 @@ lista = [1, 2, 3, 4]
 
 print(suma_pierwszego_i_listy(lista))
 
+# Napisz funkcje, która jako argument przyjmuje listę z liczbami dowolnego typu. Zadaniem funkcji jest zrobienie sumy pierwszego 
+# elementu ze wszystkimi elementami z listy, dodanie ich na koniec do listy wejściowej i zwrócenie jej. 
+
+
+
+def add_first_element(lst):
+    # Pobieramy pierwszy element z listy
+    first_element = lst[0]
+    
+    # Sumujemy pierwszy element z pozostałymi elementami listy
+    sum_of_list = sum(lst)
+    
+    # Dodajemy sumę na koniec listy
+    lst.append(sum_of_list)
+    
+    # Zwracamy zmodyfikowaną listę
+    return lst
+>>> my_list = [2, 4, 6]
+>>> modified_list = add_first_element(my_list)
+>>> print(modified_list)
+[2, 4, 6, 12]
+
+# Napisz skrypt, który od użytkownika z konsoli pobiera dwie liczby całkowite n. 
+# Program ma za zadanie zrobić sumęliczbod 1 do n, łącznie z n. Dokonaj zapisu wyniku do 
+# pliku o nazwie zadanie5.txt. W skrypcie dokonaj sprawdzenia błędów związanych z wczytywanymi wartościami, do tego celu użyj składni try-except. 
+
+try:
+    n = int(input("Podaj pierwszą liczbę całkowitą: "))
+    m = int(input("Podaj drugą liczbę całkowitą: "))
+except ValueError:
+    print("Błąd: podane wartości nie są liczbami całkowitymi")
+else:
+    if n < 1 or m < 1:
+        print("Błąd: podane wartości muszą być dodatnie")
+    else:
+        result = sum(range(n, m+1))
+        with open("zadanie5.txt", "w") as file:
+            file.write(str(result))
+        print("Wynik zapisano do pliku zadanie5.txt")
+
 
