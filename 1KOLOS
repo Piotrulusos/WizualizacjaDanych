@@ -1,0 +1,38 @@
+# Dany jest plik tekst.txt. Dokonaj wczytania pliku wraz z obsługą polskich znaków
+# oraz zapisz do zmiennej znaki, 40 znaków z tekstu zaczynając
+# od 71znaku tekstu. Następnie wyświetl tylko ilość litery „A” z wczytanego
+# fragmentu, jeśli ich nie będzie wyświetl odpowiedni komunikat.
+
+with open("tekst.txt", "r", encoding="utf-8") as f:
+    znaki = f.read()[70:110]  # wczytaj fragment tekstu od 71 do 110 znaku
+
+liczba_A = znaki.count("a")
+if liczba_A > 0:
+    print(f"Liczba liter A w fragmencie tekstu: {liczba_A}")
+else:
+    print("Nie ma liter A w fragmencie tekstu")
+
+# Napisz skrypt, w którym utworzysz listę z liczbami, a następnie za
+# pomocą python comprehension utwórz nową listę, która będzie
+# zawierać tylko liczby zmiennoprzecinkowe, na koniec wyświetl obie listy.
+
+# utworzenie listy z liczbami
+liczby = [1, 2.5, 3, 4.2, 5.7, 6, 7.1, 8, 9.3, 10]
+
+# utworzenie nowej listy zawierającej tylko liczby zmiennoprzecinkowe
+liczby_zmiennoprzecinkowe = [x for x in liczby if isinstance(x, float)]
+
+# wyświetlenie obu list
+print("Liczby:", liczby)
+print("Liczby zmiennoprzecinkowe:", liczby_zmiennoprzecinkowe)
+
+
+def suma_pierwszego_i_listy(lista):
+    suma = lista[0] + sum(lista)
+    lista.append(suma)
+    return lista
+
+
+lista = [1, 2, 3, 4]
+
+print(suma_pierwszego_i_listy(lista))
