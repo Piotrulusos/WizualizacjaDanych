@@ -1,0 +1,63 @@
+import numpy as np
+
+# inicjalizacja tablicy
+a = np.array([[0, 1], [2, 3]])
+print(a)
+# lub drugi sposób
+a = np.arange(2, 5, 0.1)
+print(a)
+# wypisanie typu zmiennej tablicy (nie jej elementów) - nda
+print(type(a))
+# sprawdzenie typu danych tablicy
+print(a.dtype)
+# inicjalizacja tablicy z konkretnym typem danych
+a = np.arange(2, dtype='int64')
+print(a.dtype)
+# zapisywanie kopii tablicy jako tablicy z innym typem
+b = a.astype('float')
+print(b)
+print(b.dtype)
+# wypisywanie rozmiaru tablicy
+print(b.shape)
+# można też sprawdzić ilość wymiarów tablicy
+print(a.ndim)
+# stworzenie tablicy wielowymiraowej może wyglądać tak
+# parametrem przekazywanym do funkcji array jest obiekt
+
+zera = np.zeros((5, 5))
+jedynki = np.ones((4, 4))
+print(zera)
+print(jedynki)
+# warto sprawdzić jaki jest domyślny typ danych takich tablic
+print(zera.dtype)
+print(jedynki.dtype)
+# można również stworzyć 'pustą' macierz o podanych wymiarach
+# wartości umieszczone są losowe, najpierw podawana jest i
+pusta = np.empty((2, 2))
+print(pusta)
+# do elementów tablicy można odwołać się tak jak do elementów
+
+macierz = np.array([[12, 11], [2, 1]])
+print(macierz)
+
+poz_1 = macierz[1, 1]
+poz_2 = macierz[0][1]
+print(poz_1)
+print(poz_2)
+
+liczby = np.arange(1, 2, 0.1)
+print(liczby)
+liczby_lin = np.linspace(1, 2, 5, endpoint=False)
+print(liczby_lin)
+z = np.indices((5, 3))
+print(z)
+print(z[0][1][2])
+
+mat_dieg = np.diag([a for a in range(5)])
+print(mat_dieg)
+
+mat_diag_k = np.diag([a for a in range(5)], 1)
+print(mat_diag_k)
+
+z = np.fromiter(range(5), dtype='int32')
+print(z)
