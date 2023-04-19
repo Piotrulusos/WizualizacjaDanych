@@ -1,0 +1,187 @@
+import numpy as np
+# zad1 Utwórz dwie macierze1x3 różnych wartości a następnie wykonaj operację mnożenia.
+# generowanie dwóch macierzy 1x3 o losowych wartościach
+A = np.random.randint(1, 10, size=(1, 3))
+B = np.random.randint(1, 10, size=(1, 3))
+
+# wyświetlenie wygenerowanych macierzy
+print("Macierz A: ", A)
+print("Macierz B: ", B)
+
+# wykonanie operacji mnożenia i wyświetlenie wyniku
+result = np.dot(A, B.T)
+print("Wynik mnożenia: ", result[0][0])
+
+# zad2 Utwórz macierz 3x3 oraz 4x4 i znajdź najniższe
+# wartości dla każdej kolumny i każdego rzędu.
+
+# tworzenie macierzy 3x3 i 4x4 o losowych wartościach
+matrix_3x3 = np.random.randint(1, 10, size=(3, 3))
+matrix_4x4 = np.random.randint(1, 10, size=(4, 4))
+
+# wyświetlenie macierzy
+print("Macierz 3x3:\n", matrix_3x3)
+print("Macierz 4x4:\n", matrix_4x4)
+
+# znalezienie najniższej wartości dla każdej kolumny macierzy 3x3
+min_column_3x3 = np.amin(matrix_3x3, axis=0)
+print("Najniższe wartości w kolumnach macierzy 3x3:", min_column_3x3)
+
+# znalezienie najniższej wartości dla każdego rzędu macierzy 3x3
+min_row_3x3 = np.amin(matrix_3x3, axis=1)
+print("Najniższe wartości w rzędach macierzy 3x3:", min_row_3x3)
+
+# znalezienie najniższej wartości dla każdej kolumny macierzy 4x4
+min_column_4x4 = np.amin(matrix_4x4, axis=0)
+print("Najniższe wartości w kolumnach macierzy 4x4:", min_column_4x4)
+
+# znalezienie najniższej wartości dla każdego rzędu macierzy 4x4
+min_row_4x4 = np.amin(matrix_4x4, axis=1)
+print("Najniższe wartości w rzędach macierzy 4x4:", min_row_4x4)
+
+# zad3 Wykorzystaj macierze z zadania pierwszego i wykonaj iloczyn macierzy.
+
+# utworzenie dwóch macierzy 1x3
+A = np.array([1, 2, 3])
+B = np.array([4, 5, 6])
+
+# przekształcenie macierzy A na macierz 3x1
+A = A.reshape((3, 1))
+
+# przekształcenie macierzy B na macierz 1x3
+B = B.reshape((1, 3))
+
+# wykonanie iloczynu macierzy A i B
+C = np.dot(A, B)
+
+# wyświetlenie wyniku
+print(C)
+
+# zad4 Utwórz dwie macierze 1x3 gdzie pierwsza z nich będzie
+# zawierała liczby całkowite, a druga liczby rzeczywiste.
+# Następnie wykonaj na nich operację mnożenia.
+
+# utworzenie dwóch macierzy 1x3
+A = np.array([1, 2, 3], dtype=int)
+B = np.array([0.5, 1.5, 2.5], dtype=float)
+
+# wykonanie operacji mnożenia
+C = np.multiply(A, B)
+
+# wyświetlenie wyniku
+print(C)
+
+# zad5 Utwórz macierz 2x3 różnych wartości a
+# następnie wylicz sinus dla każdej z jej wartości i zapisz do zmiennej “a”.
+
+# utworzenie macierzy 2x3
+A = np.array([[1, 2, 3], [4, 5, 6]])
+
+# wyliczenie sinus dla każdej wartości macierzy A
+a = np.sin(A)
+
+# wyświetlenie wyniku
+print(a)
+
+# zad6 Utwórz nową macierz 2x3 różnych wartości a
+# następnie wylicz cosinus dla każdej z jej wartości i zapisz do zmiennej “b”.
+
+# utworzenie macierzy 2x3
+B = np.array([[7, 8, 9], [10, 11, 12]])
+
+# wyliczenie cosinus dla każdej wartości macierzy B
+b = np.cos(B)
+
+# wyświetlenie wyniku
+print(b)
+
+# zad7 Wykonaj funkcję dodawania obu macierzy zapisanych wcześniej do zmiennych a i b.
+
+# utworzenie dwóch macierzy 2x3 z losowymi wartościami całkowitymi
+a = np.random.randint(0, 10, size=(2, 3))
+b = np.random.randint(0, 10, size=(2, 3))
+
+# wykonanie dodawania macierzy a i b
+c = a + b
+
+# wyświetlenie wyniku
+print(c)
+
+# zad8 Wygeneruj macierz 3x3 i wyświetl w pętli każdy z rzędów.
+
+# utworzenie macierzy 3x3
+A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# wyświetlenie każdego rzędu w pętli
+for row in A:
+    print(row)
+
+# zad9 Wygeneruj macierz 3x3 i wyświetl
+# w pętli każdy element korzystając z opcji “spłaszczenia” macierzy. (użyj funkcji flat())
+
+# utworzenie macierzy 3x3
+A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# wyświetlenie każdego elementu w pętli
+for element in A.flat:
+    print(element)
+
+# zad10 Wygeneruj macierz 9x9 a następnie zmień jej kształt. Jakie mamy możliwości i dlaczego?
+
+import numpy as np
+
+# generowanie macierzy 9x9
+A = np.arange(81).reshape((9, 9))
+
+# zmiana kształtu na 3x27
+B = A.reshape((3, 27))
+
+# zmiana kształtu na 27x3
+C = A.reshape((27, 3))
+
+# zmiana kształtu na 1x81
+D = A.reshape((1, 81))
+
+# wyświetlenie wyników
+print("Macierz A (9x9):")
+print(A)
+
+print("\nMacierz B (3x27):")
+print(B)
+
+print("\nMacierz C (27x3):")
+print(C)
+
+print("\nMacierz D (1x81):")
+print(D)
+
+#Możliwe sposoby zmiany kształtu macierzy zależą od wymiarów oryginalnej macierzy
+# oraz wymiarów macierzy, na jaką chcemy ją zmienić.
+# W ogólności, możliwe są tylko takie zmiany kształtu, które zachowują iloczyn
+# wymiarów macierzy (liczba wierszy x liczba kolumn). W przypadku macierzy 9x9,
+# można ją zmienić na macierz 3x27, 27x3 lub 1x81,
+# ponieważ w każdym z tych przypadków iloczyn wymiarów wynosi 81.
+
+# zad11 Wygeneruj macierz płaską (wektor) i
+# przekształć ją na macierz 3x4. Wygeneruj w ten sposób jeszcze kombinacje 4x3 i 2x6.
+# Spłaszcz każdą z nich i wyświetl wyniki. Czy są identyczne?
+
+# wygenerowanie wektora płaskiego
+vec = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+
+# przekształcenie wektora na macierz 3x4
+mat34 = vec.reshape(3, 4)
+print(mat34)
+print(mat34.flatten())
+
+# przekształcenie wektora na macierz 4x3
+mat43 = vec.reshape(4, 3)
+print(mat43)
+print(mat43.flatten())
+
+# przekształcenie wektora na macierz 2x6
+mat26 = vec.reshape(2, 6)
+print(mat26)
+print(mat26.flatten())
+
+
