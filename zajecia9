@@ -30,3 +30,29 @@ plt.xlabel('wartosci a')
 plt.ylabel('wartosci b')
 plt.show()
 
+import matplotlib.pyplot as plt
+import numpy as np
+
+x1 = np.arange(0, 2, 0.02)
+x2 = np.arange(0, 2, 0.02)
+
+y1 = np.sin(2 * np.pi * x1)
+y2 = np.sin(2 * np.pi * x2)
+
+plt.subplot(2, 1, 1)
+plt.plot(x1, y1)
+plt.title('Wykres sin(x)')
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.grid(True)
+
+plt.subplot(2, 1, 2)
+plt.plot(x2, y2, 'r')
+plt.xlabel('x')
+plt.ylabel('cos(x)')
+plt.title("Wykres cos(x)")
+plt.grid(True)
+
+plt.subplots_adjust(hspace=0.5)
+
+plt.show()
