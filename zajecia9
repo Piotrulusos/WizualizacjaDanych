@@ -1,0 +1,32 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import random
+
+# # wykres liniowy sinusa na przedziale dla x<0, 10> z krokiem 0,1
+#
+# # Przedział x od 0 do 10 z krokiem 0.1
+# x = np.arange(0, 10.1, 0.1)
+#
+# # Wyliczenie wartości sinusa dla każdego punktu x
+# y = np.sin(x)
+#
+# # Tworzenie wykresu
+# plt.plot(x, y)
+# plt.xlabel('x')
+# plt.ylabel('sin(x)')
+# plt.title('Wykres liniowy sinusa dla x <0, 10>')
+# plt.grid(True)
+plt.show()
+
+data = {'a': np.arange(50),
+        'c': np.random.randint(0, 50, 50),
+        'd': np.random.randn(50)}
+
+data['b'] = data['a'] + 10 * np.random.rand(50)
+data['d'] = np.abs(data['d']) * 100
+
+plt.scatter('a', 'b', c='c', s='d', data=data, cmap='plasma')
+plt.xlabel('wartosci a')
+plt.ylabel('wartosci b')
+plt.show()
+
