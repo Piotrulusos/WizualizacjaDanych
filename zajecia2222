@@ -1,0 +1,36 @@
+# # Zad1
+# zdanie = input('napisz zdanie')
+# print(len(zdanie.split()))
+# # Zad2
+# import sys
+# sys.stdout.write('wpisz 3 liczby')
+# a = sys.stdin.readline()
+# b = sys.stdin.readline()
+# c = sys.stdin.readline()
+# wynik = int(a)**int(b) + int(c)
+# sys.stdout.write(str(wynik))
+# Zad3
+# napis = input().lower().replace(" ", "")
+# if napis == napis[::-1]:
+#     print("Jest")
+# else:
+#     print("Niie Jest")
+# Zad4
+liczba = int(input())
+if liczba < 2:
+    print("Nie jest")
+for i in range(2, liczba):
+    if liczba % i != 0:
+        print('Nie jest')
+    else:
+        print("Jest")
+
+
+
+
+
+
+
+
+
+
