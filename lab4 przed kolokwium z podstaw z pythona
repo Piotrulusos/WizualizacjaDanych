@@ -1,0 +1,69 @@
+# 1.Napisz skrypt, który policzy i wyświetli następujące wyrażenie:
+import math
+
+wynik1 = math.pow(pow(math.e, 4) - math.log(2, 34), 1 / 3)
+
+print(round(wynik1, 2))
+wynik2 = math.pow(math.log(math.e, 20) + math.cos(45) + math.e, 1 / 3)
+
+print(round(wynik2, 2))
+wynik3 = math.pow(math.log(3, 20) + math.sin(45) * (5 / 8), 1 / 4)
+
+print(round(wynik3, 2))
+wynik4 = math.log(3, 23) + math.pow(math.sin(34) + 5, 1 / 3)
+
+print(round(wynik4, 2))
+wynik5 = math.pow(math.log(2, 32 + math.pi + math.sin(56)), 1 / 4)
+print(round(wynik5, 2))
+
+# 2.Napisz funkcje, który rysuje wieżę z literek. Użytkownik podaje wysokość wieży ale nie więcej jak 10.
+# A
+# AA
+# AAA
+# AAAA
+# AAAAA
+# AAAAAA
+
+x = int(input("Podaj wysokość wieży"))
+if (x > 10 & x < 1):
+    print("większe niż 10 lub wartość mniejsza od 1")
+else:
+    print("twoja wysokość wieży to: " + str(x))
+licznik = 1
+for i in range(0, x):
+    print('A' * licznik)
+    licznik += 1
+
+# 3.Zmodyfikuj kod z zadania 2 tak aby otrzymać piramidę. Użytkownik podaje wysokość piramidy ale nie więcej jak 10
+wysokość = int(input("Podaj wysokość wieży"))
+if (wysokość > 10 | wysokość < 1):
+    print("większe niż 10 lub wartość mniejsza od 1")
+else:
+    print("twoja wysokość wieży to: " + str(wysokość))
+licznik = 1
+szerokość = wysokość - 1
+for i in range(0, wysokość):
+    print(' ' * szerokość + 'A' * licznik)
+    licznik += 2
+    szerokość -= 1
+
+# 4. Zapoznaj się z modułem random i możliwością wybierania wartości losowej.
+import random
+
+print(random.randrange(1, 100))
+
+# 5.Napisz funkcje, która utworzy wektor nxn (n wierszy, n kolumn) składający się z wartości losowych,
+# a następnie funkcja ma zwrócić sumę wszystkich elementów z każdego wiersza.
+
+import random
+
+
+def suma_wierszy(n):
+    wektor = [[random.randint(1, 10) for _ in range(n)] for _ in range(n)]
+    suma_wierszy = [sum(wiersz) for wiersz in wektor]
+    return suma_wierszy
+
+
+n = int(input('podaj n'))
+wynik = suma_wierszy(n)
+print(wynik)
