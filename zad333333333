@@ -1,0 +1,83 @@
+# Zadania
+# Zad1
+# Zdefiniuj następujące zbiory, wykorzystując Python comprehension:
+# A = {1-x: x∈<1,10>}
+# B = {1,4,16,…,47}
+# C = {x: x∈B i x jest liczbą podzielną przez 2}
+# Zad2
+# Wygeneruj losowo 10 elementów, zapisz je do listy1, następnie wykorzystując Python Comprehension zdefiniuj nową listę, która będzie zawierała tylko parzyste elementy
+# Zad3
+# Utwórz słownik z produktami spożywczymi do kupienia. Klucz to niech będzie nazwa produktu a wartość - jednostka w jakiej się je kupuje (np. sztuki, kg itd.).
+# Wykorzystaj Python Comprehension do zdefiniowania nowej listy, gdzie będą produkty, których wartość to sztuki.
+# Zad4
+# Zdefiniuj funkcje, która sprawdzi czy trójkąt jest prostokątny.
+# Zad5
+# Zdefiniuj funkcje która policzy pole trapezu. Funkcja ma przyjmować wartości domyślne.
+# Zad6.
+# Zdefiniuj funkcję która będzie liczyć iloczyn elementów ciągu.
+# Parametry funkcji a1 (wartość początkowa), b (wielkość o ile mnożone są kolejne elementy), ile (ile elementów ma mnożyć)
+# Ponadto funkcja niech przyjmuje wartości domyślne: a = 1, b = 4, ile = 10
+# Zad7
+# Napisz skrypt, który liczy pierwiastek z liczby podanej przez użytkownika jeśli użytkownik poda wartość ujemną to powinien być wyłapany błąd.
+
+
+import random
+import math
+
+# Zadanie 1
+# A = {1-x: x∈<1,10>}
+A = {1 - x: x for x in range(1, 11)}
+
+# B = {1,4,16,…,47}
+B = {x ** 2 for x in range(1, 7)}
+
+# C = {x: x∈B i x jest liczbą podzielną przez 2}
+C = {x for x in B if x % 2 == 0}
+
+# Zadanie 2
+lista1 = [random.randint(1, 100) for _ in range(10)]
+
+lista_parzyste = [x for x in lista1 if x % 2 == 0]
+
+# Zadanie 3
+
+
+produkty = {
+    'jabłka': 'kg',
+    'banany': 'sztuki',
+    'mleko': 'litr',
+    'chleb': 'sztuki',
+    'jajka': 'sztuki'
+}
+
+produkty_sztuki = {produkt for produkt, jednostka in produkty.items() if jednostka == 'sztuki'}
+
+
+# Zadanie 4
+def czy_prostokatny(a, b, c):
+    return a ** 2 + b ** 2 == c ** 2 or b ** 2 + c ** 2 == a ** 2 or a ** 2 + c ** 2 == b ** 2
+
+
+# Zadanie 5
+def pole_trapezu(a=2, b=4, h=3):
+    return 0.5 * (a + b) * h
+
+
+# Zadanie 6
+def iloczyn_ciagu(a=1, b=4, ile=10):
+    iloczyn = a
+    for _ in range(ile - 1):
+        a *= b
+        iloczyn *= a
+    return iloczyn
+
+
+# Zadanie 7
+try:
+    liczba = float(input("Podaj liczbę: "))
+    if liczba < 0:
+        raise ValueError("Liczba nie może być ujemna!")
+    pierwiastek = math.sqrt(liczba)
+    print("Pierwiastek z", liczba, "to:", pierwiastek)
+except ValueError as e:
+    print("Błąd:", e)
