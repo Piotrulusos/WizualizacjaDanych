@@ -1,0 +1,159 @@
+import numpy as np
+
+# zad1
+# Za pomocą funkcji arange stwórz tablicę numpy składającą się z 15 kolejnych wielokrotności liczby 3.
+# a = np.arange(3, 48, 3)
+# print(a)
+# zad2
+# Stwórz listę składającą się z wartości zmiennoprzecinkowych a następnie zapisz do innej
+# zmiennej jej kopię przekonwertowaną na typ int64
+# b = np.arange(2, dtype='float')
+# print(b)
+# c = b.astype('int64')
+# print(c)
+
+
+# zad3
+# Napisz funkcję, która będzie:
+# • Przyjmowała jeden parametr ‘n’ w postaci liczby całkowitej
+# • Zwracała tablicę Numpy o wymiarach n*n kolejnych liczb całkowitych poczynając od 1
+
+# def zadanie3(n):
+#     tab = np.arange(1, n*n+1).reshape(n, n)
+#     print(tab.ndim)
+#     return tab
+# n = int(input('podaj n'))
+# print(zadanie3(n))
+
+# zad4
+# Napisz funkcję, która będzie przyjmowała 2 parametry:
+# liczbę, która będzie podstawą operacji potęgowania oraz ilość kolejnych potęg do wygenerowania.
+# Korzystając z funkcji logspace generuj
+# tablicę jednowymiarową kolejnych potęg podanej liczby, np. generuj(2,4) -> [2,4,8,16]
+
+# def zadanie4(podstawa, ilosc):
+#     a = np.logspace(1, ilosc, num=ilosc, base=podstawa, dtype=int)
+#     return a
+#
+# print(zadanie4(2, 4))
+
+# zad5
+# Napisz funkcję, która:
+# • Na wejściu przyjmuje jeden parametr określający długość wektora
+# • Na podstawie parametru generuj wektor, ale w kolejności odwróconej
+# • Generuj macierz diagonalną z w/w wektorem jako przekątną
+
+# def zadanie5(długość):
+#     wektor = np.arange(długość, 0, -1)
+#     print(wektor)
+#     mat_diag_dlugosc = np.diag(wektor)
+#     return mat_diag_dlugosc
+#
+# print(zadanie5(4))
+
+# zad6
+# Stwórz skrypt który na wyjściu wyświetli macierz numpy
+# (tablica wielowymiarowa) w postaci wykreślanki, gdzie jedno słowo będzie
+# wypisane w kolumnie, jedno w wierszu i jedno po ukosie. Jedno z tych słów powinno być wypisane od prawej do lewej.
+# def tworzenie_wykreslanki(words):
+#     # Tworzenie pustej macierzy o odpowiednim rozmiarze
+#     size = max(len(max(words, key=len)), 3)
+#     macierz = np.full((size, size), ' ', dtype=str)
+#
+#     # Wypisanie pierwszego słowa w kolumnie
+#     macierz[:len(words[0]), 0] = list(words[0])
+#
+#     # Wypisanie drugiego słowa w wierszu
+#     macierz[0, :len(words[1])] = list(words[1])
+#
+#     # Wypisanie trzeciego słowa po ukosie (od prawej do lewej)
+#     macierz[size - 1: size - len(words[2]) - 1: -1, size - len(words[2]):] = list(words[2])
+#
+#     return macierz
+#
+# # Lista trzech słów
+# slowa = ['macierz', 'matemat', 'wektor']
+#
+# # Tworzenie wykreślanki
+# wynik = tworzenie_wykreslanki(slowa)
+# # Wyświetlanie wykreślanki
+# print(wynik)
+#
+# zad7
+# Napisz funkcję, która wygeneruje macierz wielowymiarową postaci:
+# [[2 4 6]
+# [4 2 4]
+# [6 4 2]]
+# Przy założeniach:
+# funkcja przyjmuje parametr n, który określa wymiary macierzy jako n*n i umieszcza wielokrotność
+# liczby 2 na kolejnych jej przekątnych rozchodzących się od głównej przekątnej.
+# def generate_matrix(n):
+#     # Tworzenie pustej macierzy o wymiarach n x n
+#     matrix = np.zeros((n, n), dtype=int)
+#
+#     # Wypełnianie przekątnych macierzy
+#     for i in range(n):
+#         matrix[i, i] = 2  # Główna przekątna
+#         matrix[n - i - 1, i] = 2 + 2  # Druga przekątna
+#
+#     return matrix   DO POPRAWY
+#
+#
+# # Przykładowe wywołanie funkcji dla n = 3
+# n = 4
+# result_matrix = generate_matrix(n)
+# print(result_matrix)
+
+# zad8
+# Napisz funkcję, która:
+# • jako parametr wejściowy będzie przyjmowała tablicę wielowymiarową numpy oraz parametr ‘kierunek’,
+# • parametr kierunek określa czy tablica wejściowa będzie dzielona w pionie czy poziomie
+# • funkcja dzieli tablicę wejściową na pół (napisz warunek, który wyświetli komunikat,
+# że ilość wierszy lub kolumn, w zależności od kierunku podziału, nie pozwala na operację)
+def zadanie8(macierz, kierunek):
+    if kierunek == 'pion':
+        if macierz.shape[0] % 2 != 0:
+            print("Nieparzysta liczba wierszy nie pozwala na podział w pionie.")
+            return None
+        else:
+            index_połowy = macierz.shape[0] // 2
+            pierwsza_połowa = macierz[:index_połowy, :]
+            druga_połowa = macierz[index_połowy:, :]
+            return pierwsza_połowa, druga_połowa
+    elif kierunek == 'poziom':
+        if macierz.shape[1] % 2 != 0:
+            print("Nieparzysta liczba kolumn nie pozwala na podział w poziomie.")
+            return None
+        else:
+            index_połowy = macierz.shape[1] // 2
+            pierwsza_połowa = macierz[:, :index_połowy]
+            druga_połowa = macierz[:, index_połowy:]
+            return pierwsza_połowa, druga_połowa
+    else:
+        print("Niepoprawny kierunek. Dopuszczalne wartości: 'pion', 'poziom'.")
+        return None
+
+macierz = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+print(zadanie8(macierz, 'pion'))
+
+print(zadanie8(macierz, 'poziom'))
+
+# zad9
+# Stwórz macierz 5x5, która będzie zawierała kolejne wartości ciągu Fibonacciego.
+
+fib_matrix = np.zeros((n, n), dtype=int)  # Inicjalizacja macierzy zer
+fib_matrix[0, 0] = 1  # Pierwszy element ciągu Fibonacciego
+fib_matrix[0, 1] = 1  # Drugi element ciągu Fibonacciego
+for i in range(n):
+    for j in range(n):
+        if i == 0 and j <= 1:
+            continue  # Pominięcie pierwszych dwóch elementów, które już są ustawione
+        fib_matrix[i, j] = fib_matrix[i, j-1] + fib_matrix[i, j-2]  # Kolejny element ciągu Fibonacciego
+
+
+
+
+
+
+
