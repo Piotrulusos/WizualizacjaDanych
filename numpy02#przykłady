@@ -1,0 +1,191 @@
+import numpy as np  # Import biblioteki numpy
+
+# Inicjujemy tablicę a zawierającą wartości [20, 30, 40, 50]
+a = np.array([20, 30, 40, 50])
+
+# Inicjujemy tablicę b zawierającą wartości [0, 1, 2, 3] używając funkcji arange z numpy
+b = np.arange(4)
+
+# Wyświetlamy zawartość tablicy a
+print(a)
+
+# Wyświetlamy zawartość tablicy b
+print(b)
+
+# Odejmujemy tablicę b od tablicy a i zapisujemy wynik do nowej zmiennej c
+c = a - b
+print(c)
+
+# Podnosimy każdy element tablicy b do kwadratu i wyświetlamy wynik
+print(b**2)
+
+# Wyświetlamy zawartość tablicy a przed modyfikacją
+print(a)
+
+# Dodajemy tablicę b do tablicy a i zapisujemy wynik w tablicy a
+a += b
+print(a)
+
+# Odejmujemy tablicę b od tablicy a i zapisujemy wynik w tablicy a
+a -= b
+print(a)
+
+///////////////////////////////////////////////////////////////////////////
+# Tworzymy macierz o kształcie (3,4) używając funkcji arange i reshape
+a = np.arange(12).reshape((3,4))
+
+# Wyświetlamy macierz a
+print(a)
+
+# Obliczamy sumę wszystkich elementów w macierzy a i wyświetlamy wynik
+print(a.sum())
+
+# Obliczamy sumę każdej kolumny w macierzy a i wyświetlamy wynik
+print(a.sum(axis=0))
+
+# Znajdujemy minimum dla każdego rzędu w macierzy a i wyświetlamy wynik
+print(a.min(axis=1))
+
+# Obliczamy skumulowaną sumę dla każdego rzędu w macierzy a i wyświetlamy wynik
+print(a.cumsum(axis=1))
+///////////////////////////////////////////////////////////////////////////////
+# Inicjujemy tablice a i b
+a = np.arange(3)
+b = np.arange(3)
+
+# Wyświetlamy zawartość tablicy a
+print(a)
+
+# Wyświetlamy zawartość tablicy b
+print(b)
+
+# Obliczamy iloczyn macierzy a i b i wyświetlamy wynik
+print(a.dot(b))
+
+# Obliczamy iloczyn macierzy a i b za pomocą funkcji dot z numpy i wyświetlamy wynik
+print(np.dot(a, b))
+/////////////////////////////////////////////////////////////////////////////////////////
+
+# Tworzymy macierz całkowitą a zawierającą same jedynki
+a = np.ones(3, dtype='int32')
+
+# Wyświetlamy typ danych macierzy a
+print(a.dtype)
+
+# Tworzymy macierz zmiennoprzecinkową b, używając funkcji linspace do generowania wartości od 0 do pi włącznie, dzieląc na 3 równomierne części
+b = np.linspace(0, np.pi, 3)
+
+# Wyświetlamy typ danych macierzy b
+print(b.dtype)
+
+# Dodajemy macierze a i b, wynikiem będzie macierz zmiennoprzecinkowa
+c = a + b
+print(c)
+print(c.dtype)
+
+# Obliczamy wykładnik liczby zespolonej dla każdego elementu macierzy c i mnożymy przez jednostkę urojoną (1j)
+d = np.exp(c * 1j)
+
+# Wyświetlamy typ danych macierzy d
+print(d.dtype)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# Inicjujemy tablicę b używając funkcji arange, zawierającą wartości od 0 do 2
+b = np.arange(3)
+
+# Wyświetlamy zawartość tablicy b
+print(b)
+
+# Obliczamy wykładnik liczby e dla każdego elementu tablicy b i wyświetlamy wynik
+print(np.exp(b))
+
+# Obliczamy pierwiastek kwadratowy dla każdego elementu tablicy b i wyświetlamy wynik
+print(np.sqrt(b))
+
+# Inicjujemy tablicę c zawierającą wartości [2., -1., 4.]
+c = np.array([2., -1., 4.])
+
+# Dodajemy elementy tablicy b i c element po elemencie i wyświetlamy wynik
+print(np.add(b, c))
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+# Generujemy macierz 3x2 używając funkcji arange do wygenerowania wartości od 0 do 5, a następnie reshape do zmiany kształtu na (3,2)
+a = np.arange(6).reshape((3,2))
+
+# Wyświetlamy macierz a
+print(a)
+
+# Iterujemy po macierzy a wzdłuż pierwszej osi (czyli po wierszach)
+for b in a:
+    # Wyświetlamy każdy wiersz osobno
+    print(b)
+    # Dodajemy pusty wiersz po każdym wierszu dla czytelności
+    print("")
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# Generujemy macierz 3x2 używając funkcji arange do wygenerowania wartości od 0 do 5, a następnie reshape do zmiany kształtu na (3,2)
+a = np.arange(6).reshape((3,2))
+
+# Wyświetlamy macierz a
+print(a)
+
+# Iterujemy po macierzy a jakby była macierzą płaską, używając atrybutu flat
+for b in a.flat:
+    # Wyświetlamy każdy element macierzy
+    print(b)
+    # Dodajemy pusty wiersz po każdym elemencie dla czytelności
+    print("")
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# Generujemy macierz 1x6 używając funkcji arange do wygenerowania wartości od 0 do 5
+a = np.arange(6)
+
+# Wyświetlamy macierz a
+print(a)
+
+# Wyświetlamy kształt macierzy a
+print(a.shape)
+
+# Generujemy macierz 3x3 b, składającą się z trzech wierszy, każdy zawierający wartości od 0 do 2
+b = np.array([np.arange(3), np.arange(3), np.arange(3)])
+
+# Wyświetlamy macierz b
+print(b)
+
+# Wyświetlamy kształt macierzy b
+print(b.shape)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# Generujemy macierz o wymiarach 1x6 używając funkcji arange do wygenerowania wartości od 0 do 5
+a = np.arange(6)
+print(a)
+print(a.shape)
+print("")
+
+# Przekształcamy macierz a na macierz o wymiarach 2x3
+b = a.reshape((2,3))
+print(b)
+print(b.shape)
+print("")
+
+# Przekształcamy macierz b na macierz o wymiarach 3x2
+c = b.reshape((3,2))
+print(c)
+print(c.shape)
+print("")
+
+# Spłaszczamy macierz c, odzyskując pierwotny kształt macierzy a
+d = c.ravel()
+print(d)
+print(d.shape)
+print("")
+
+# Wykonujemy transpozycję macierzy b
+e = b.T
+print(e)
+print(e.shape)
+
+
+
+
