@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
 
+iris = pd.read_csv('iris.data')
+print(iris)
+pd.read_excel()
+
 # Tworzenie serii danych
 s = pd.Series([18, 12, 8, 14], index=['a', 'b', 'c', 'd'])
 
