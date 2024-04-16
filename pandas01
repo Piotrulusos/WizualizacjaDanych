@@ -1,0 +1,163 @@
+import pandas as pd
+import numpy as np
+
+# Tworzenie serii danych
+s = pd.Series([18, 12, 8, 14], index=['a', 'b', 'c', 'd'])
+
+# Tworzenie ramki danych
+data = {'Kraj': ['Belgia', 'India', 'Brazylia'],
+        'Stolica': ['Bruksela', 'New Delhi', 'Brasilian'],
+        'Populacja': [11198846, 1383171653, 207847528]}
+df = pd.DataFrame(data)
+
+# Wyświetlanie serii danych i ramki danych
+print(s)
+print("")
+print(df)
+print("")
+
+# Wyświetlanie wartości z serii 's' za pomocą indeksu 'c' oraz za pomocą atrybutu 'c'
+print(s['c'])  # Wypisanie wartości z indeksem 'c'
+print("")
+print(s.c)  # Wypisanie wartości z atrybutem c
+print("")
+
+# Wyświetlanie pierwszego wiersza z ramki danych
+print(df[0:1])
+print("")
+
+# Dodatkowe wyświetlanie kolumny 'Populacja' z ramki danych
+print(df['Populacja'])
+print("")
+
+# Wyświetlanie wartości na pozycji (0, 0) z ramki danych za pomocą indeksów liczbowych
+print(df.iloc[0, 0])
+print("")
+
+# Wyświetlanie wartości na pozycji (0, 'Kraj') z ramki danych za pomocą nazw kolumn i indeksów
+print(df.loc[0, 'Kraj'])
+print("")
+
+# Wyświetlanie wartości na pozycji (0, 'Kraj') z ramki danych za pomocą metody 'at'
+print(df.at[0, 'Kraj'])
+print("")
+
+# Wyświetlanie całego wiersza o indeksie 0 z ramki danych
+print(df.loc[0])
+print("")
+print("PRZERWA")
+
+#############################################################################################
+
+print('kraj: ' + df.Kraj)
+print("")
+print(df.sample())
+print("")
+
+# Wyświetlanie wiersza ramki danych za pomocą indeksu liczbowego
+print(df.iloc[0])
+print("")
+
+# Wybieranie losowego wiersza z ramki danych
+print(df.sample())
+print("")
+
+# Wybieranie dwóch losowych wierszy z ramki danych
+print(df.sample(2))
+print("")
+
+# Wybieranie losowego podzbioru wierszy z ramki danych o określonym ułamku
+print(df.sample(frac=0.5))
+print("")
+
+# Wybieranie losowego podzbioru wierszy z powtórzeniami
+print(df.sample(n=10, replace=True))
+print("")
+
+# Wyświetlanie pierwszych pięciu wierszy ramki danych
+print(df.head())
+print("")
+
+# Wyświetlanie pierwszych dwóch wierszy ramki danych
+print(df.head(2))
+print("")
+
+# Wyświetlanie ostatniego wiersza ramki danych
+print(df.tail(1))
+print("")
+
+# Podsumowanie statystyk ramki danych
+print(df.describe())
+print("")
+
+# Transponowanie ramki danych
+print(df.T)
+print("")
+
+print("KOLEJNE")
+print("")
+
+print(s[(s>0)])
+
+print(s.where(s > 10))
+
+print(s.where(s>10, 'za dużo'))
+
+seria = s.copy()
+seria.where(seria > 10, 'za dużo', inplace=True)
+print('############')
+print(seria)
+
+print(s[~(s > 10)])
+
+print(s[(s < 13) & (s > 8)])
+print('########################')
+print('########################')
+print(df[df['Populacja'] > 12000000])
+print('########################')
+print(df[(df.Populacja > 1000000) & (df.index.isin([0,2]))])
+
+print('########################')
+szukaj = ['Belgia', 'Brasilian']
+print(df.isin(szukaj))
+print('########################')
+print('########################')
+
+s['e'] = 15
+print(s.e)
+print('########################')
+s['f'] = 16
+print(s)
+print('########################')
+
+df.loc[3] = 'dodane'
+print(df)
+print('########################')
+
+df.loc[4] = ['Polska', 'Warszawa', 38675467]
+print(df)
+print('########################')
+
+new_df = df.drop([3])
+print(new_df)
+print('########################')
+
+df.drop([3],inplace=True)
+print(df)
+print('########################')
+print('########################')
+
+# df.drop('Kraj',axis=1,inplace=True) usuwanie całej kolmuny 'Kraj'
+
+df['Kontynent'] = ['Europa', 'Azja', 'Ameryka Południowa', 'Europa'] # dodanie nowej kolumny 'Kontynent'
+print(df)
+print('########################')
+
+print(df.sort_values('Kraj')) # sortowanie alfabetycznie kolumny 'Kraj'
+print('########################')
+
+grouped = df.groupby(['Kontynent'])
+print(grouped.get_group('Europa')) # grupowanie ze względu na kontynent europa
+
+print(df.groupby(['Kontynent']).agg({'Populacja':'sum'})) # sumowanie populacji z danych kontynentów
+
