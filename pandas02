@@ -1,0 +1,70 @@
+# Zad1 Wczytaj do DataFrame arkusz z narodzinami dzieci w Polsce dostępny w pliku /datasets/imiona.xlsx
+import pandas as pd
+import numpy as np
+
+df = pd.read_excel('imiona.xlsx')
+
+
+# Zad2 Z danych z zadania 1 wyświetl (korzystając w miarę możliwości z funkcji biblioteki Pandas):
+# • tylko te rekordy gdzie liczba nadanych imion była większa niż 1000 w danym roku
+
+print(df[df['Liczba'] > 1000])
+
+# • tylko rekordy gdzie nadane imię jest takie jak Twoje
+print(df[df['Imie'] == 'PIOTR'])
+
+# • sumę wszystkich urodzonych dzieci w całym danym okresie,
+print(df['Liczba'].sum())
+
+# • sumę dzieci urodzonych w latach 2000-2005
+
+print(df[(df['Rok'] >= 2000) & (df['Rok'] <= 2005)]['Liczba'].sum())
+
+# • sumę urodzonych chłopców i dziewczynek,
+print('chłopcy: ', df[df['Plec'] == 'M']['Liczba'].sum())
+print('dziewczynki: ', df[df['Plec'] == 'K']['Liczba'].sum())
+# alternatywne rozwiązanie
+print(df.groupby('Plec')['Liczba'].sum())
+
+# • najbardziej popularne imię dziewczynki i chłopca w danym roku ( czyli po 2 rekordy na rok),
+roczne_najpopularniejsze_imiona = df.loc[df.groupby(['Rok', 'Plec'])['Liczba'].idxmax()]
+print(roczne_najpopularniejsze_imiona)
+
+# • najbardziej popularne imię dziewczynki i chłopca w całym danym okresie,
+print(df[df['Plec'] == 'K']['Imie'].value_counts().idxmax())
+print(df[df['Plec'] == 'M']['Imie'].value_counts().idxmax())
+
+# Zad3 Wczytaj plik /datasets/zamowieniana.csv a następnie wyświetl:
+zam = pd.read_csv('zamowienia.csv', sep=";")
+# • listę unikalnych nazwisk sprzedawców (przetwarzając zwróconą pojedynczą kolumnę z DataFrame)
+print(zam.head())
+unikalni = zam['Sprzedawca'].unique()
+print(unikalni)
+# • 5 najwyższych wartości zamówień
+najwyzsze_zamowienia = zam.nlargest(5, 'Utarg')
+print(najwyzsze_zamowienia)
+# • ilość zamówień złożonych przez każdego sprzedawcę
+ilosc_zamowien_sprzedawcy = zam['Sprzedawca'].value_counts()
+print(ilosc_zamowien_sprzedawcy)
+# • sumę zamówień dla każdego kraju
+suma_zamowien_kraje = zam.groupby('Kraj')['Utarg'].sum()
+print(suma_zamowien_kraje)
+print(" ")
+# • sumę zamówień dla roku 2005, dla sprzedawców z Polski
+suma_zamowien_Polska_2005 = zam[(zam['Data zamowienia'].str.contains('2005')) & (zam['Kraj'] == 'Polska')]['Utarg'].sum()
+print(suma_zamowien_Polska_2005)
+print(" ")
+# • średnią kwotę zamówienia w 2004 roku,
+srednia_kwota_zamowienia_2004 = zam[zam['Data zamowienia'].str.contains('2004')]['Utarg'].mean()
+print(srednia_kwota_zamowienia_2004)
+# • zapisz dane za 2004 rok do pliku zamówienia_2004.csv a dane za 2005 do pliku zamówienia_2005.csv
+zamowienia_2004 = zam[zam['Data zamowienia'].str.contains('2004')]
+zamowienia_2004.to_csv('zamowienia_2004.csv', index=False)
+
+zamowienia_2005 = zam[zam['Data zamowienia'].str.contains('2005')]
+zamowienia_2005.to_csv('zamowienia_2005.csv', index=False)
+
+test1 = pd.read_csv('zamowienia_2004.csv')
+test2 = pd.read_csv('zamowienia_2005.csv')
+print(test1.head())
+print(test2.head())
