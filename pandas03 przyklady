@@ -1,0 +1,124 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Tworzy obiekt Series zawierający 1000 losowych liczb o rozkładzie normalnym
+ts = pd.Series(np.random.randn(1000))
+
+# Generuje skumulowaną sumę kolejnych elementów serii
+ts = ts.cumsum()
+
+# Wyświetla skumulowaną sumę serii w konsoli
+print(ts)
+
+# Tworzy wykres serii danych (skumulowanej sumy)
+ts.plot()
+
+# Wyświetla wykres
+plt.show()
+
+data = {'Kraj': ['Belgia', 'Indie', 'Brazylia', 'Polska'],
+        'Stolica': ['Bruksela', 'New Delhi', 'Brasilia', 'Warszawa'],
+        'Kontynent': ['Europa', 'Azja', 'Ameryka Południowa', 'Europa'],
+        'Populacja': [11190846, 1303171035, 207847528, 38675467]}
+df = pd.DataFrame(data)
+print(df)
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# -----------------------------------------------------------------------------#
+# Tworzenie słownika z danymi
+data = {
+    'Kraj': ['Belgia', 'Indie', 'Brazylia', 'Polska'],
+    'Stolica': ['Bruksela', 'New Delhi', 'Brasilia', 'Warszawa'],
+    'Kontynent': ['Europa', 'Azja', 'Ameryka Południowa', 'Europa'],
+    'Populacja': [11190846, 1303171035, 207847528, 38675467]
+}
+
+# Tworzenie DataFrame na podstawie słownika danych
+df = pd.DataFrame(data)
+
+# Wyświetlanie DataFrame w konsoli
+print(df)
+
+# Grupowanie danych wg kontynentu i agregacja populacji (suma)
+grupa = df.groupby(['Kontynent']).agg({'Populacja': ['sum']})
+
+# Wyświetlanie zgrupowanych danych w konsoli
+print(grupa)
+
+# Tworzenie wykresu słupkowego na podstawie zgrupowanych danych
+wykres = grupa.plot.bar()
+
+# Ustawienie etykiety osi Y
+wykres.set_ylabel("Mld")
+
+# Ustawienie etykiety osi X
+wykres.set_xlabel('Kontynent')
+
+# Ustawienie kierunku tekstu etykiet słupków na osi X
+wykres.tick_params(axis='x', labelrotation=0)
+
+# Dodanie legendy do wykresu
+wykres.legend()
+
+# Ustawienie tytułu wykresu
+wykres.set_title('Populacja z podziałem na kontynenty')
+
+# Zapisanie wykresu do pliku PNG
+plt.savefig('wykres.png')
+
+# Wyświetlenie wykresu
+plt.show()
+
+# -----------------------------------------------------------------------------#
+# Wczytywanie danych z pliku CSV, zakładając, że dane są oddzielone średnikiem, a wartości dziesiętne oznaczone kropką
+df = pd.read_csv('dane.csv', header=0, sep=";", decimal=".")
+
+# Wyświetlanie zawartości DataFrame w konsoli
+print(df)
+
+# Grupowanie danych według kolumny 'Imię i nazwisko' i agregowanie sumy wartości zamówienia
+grupa = df.groupby(['Imię i nazwisko']).agg({'Wartość zamówienia': ["sum"]})
+
+# Tworzenie wykresu kołowego z wartościami procentowymi, sformatowanymi z dokładnością do 2 miejsc po przecinku
+# subplots=True tworzy osobny wykres dla każdej kolumny w grupie (w tym przypadku tylko jedna kolumna)
+# figsize ustawia wielkość wykresu na 6x6 cali, colors ustawia kolory na czerwony i zielony
+grupa.plot(kind='pie', subplots=True, autopct='%.2f %%', fontsize=20,
+           figsize=(6, 6), colors=['red', 'green'])
+
+# Dodanie legendy do wykresu, umieszczonej w prawym dolnym rogu
+plt.legend(loc="lower right")
+
+# Ustawienie tytułu wykresu
+plt.title('Suma zamówienia dla sprzedawcy')
+
+# Wyświetlenie wykresu
+plt.show()
+# -----------------------------------------------------------------------------#
+# Tworzenie serii z 1000 losowymi liczbami o rozkładzie normalnym
+ts = pd.Series(np.random.randn(1000))
+
+# Generowanie skumulowanej sumy kolejnych elementów serii
+ts = ts.cumsum()
+
+# Rzutowanie Series na DataFrame z kolumną 'wartości'
+df = pd.DataFrame(ts, columns=['wartości'])
+
+# Wyświetlanie DataFrame w konsoli
+print(df)
+
+# Dodanie nowej kolumny 'Średnia krocząca' z wartościami średniej kroczącej (okno 50)
+df['Średnia krocząca'] = df['wartości'].rolling(window=50).mean()
+
+# Tworzenie wykresu DataFrame
+df.plot()
+
+# Dodanie legendy do wykresu
+plt.legend()
+
+# Wyświetlenie wykresu
+plt.show()
+
+
