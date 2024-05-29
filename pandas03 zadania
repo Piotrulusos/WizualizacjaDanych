@@ -1,0 +1,96 @@
+# Zadanie 1
+# Stwórz wykres liniowy, który wyświetli liczbę urodzonych dzieci dla każdego roku.
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Wczytywanie danych z pliku Excel
+df = pd.read_excel('imiona.xlsx')
+
+# Sumowanie liczby urodzeń dla każdego roku
+df_grouped = df.groupby('Rok')['Liczba'].sum().reset_index()
+
+# Tworzenie wykresu liniowego
+plt.figure(figsize=(10, 6))
+plt.plot(df_grouped['Rok'], df_grouped['Liczba'], marker='o')
+
+# Ustawienia etykiet osi i tytułu
+plt.xlabel('Rok')
+plt.ylabel('Liczba urodzeń')
+plt.title('Liczba urodzonych dzieci dla każdego roku')
+
+# Wyświetlenie wykresu
+plt.show()
+
+# Zadanie 2
+# Stwórz wykres słupkowy, który wyświetli liczbę urodzonych chłopców i dziewczynek z całego zbioru.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Wczytanie danych z pliku Excel
+df = pd.read_excel('imiona.xlsx')
+
+# Sumowanie liczby urodzeń dla każdej płci
+df_gender = df.groupby('Plec')['Liczba'].sum()
+
+# Stworzenie wykresu słupkowego
+plt.figure(figsize=(8, 6))
+df_gender.plot(kind='bar', color=['blue', 'pink'])
+
+# Ustawienia etykiet osi i tytułu
+plt.xlabel('Płeć')
+plt.ylabel('Liczba urodzeń')
+plt.title('Liczba urodzonych dzieci według płci')
+
+# Wyświetlenie wykresu
+plt.show()
+
+# Zadanie 3
+# Wykres kołowy z wartościami % ukazującymi ilość urodzonych chłopców i dziewczynek w ostatnich 5 latach z datasetu.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Wczytanie danych z pliku Excel
+df = pd.read_excel('imiona.xlsx')
+
+# Filtrowanie danych dla ostatnich 5 lat
+df_last_5_years = df[df['Rok'] >= df['Rok'].max() - 4]
+
+# Sumowanie liczby urodzeń dla każdej płci w ostatnich 5 latach
+df_gender_last_5_years = df_last_5_years.groupby('Plec')['Liczba'].sum()
+
+# Stworzenie wykresu kołowego z wartościami procentowymi
+plt.figure(figsize=(8, 8))
+plt.pie(df_gender_last_5_years, labels=df_gender_last_5_years.index, autopct='%1.1f%%', colors=['blue', 'pink'])
+
+# Ustawienie tytułu
+plt.title('Procentowy udział urodzeń chłopców i dziewczynek\nw ostatnich 5 latach')
+
+# Wyświetlenie wykresu
+plt.show()
+
+# Zadanie 4
+# Wyświetl na pomocą wykresu słupkowego ilość złożonych zamówień przez poszczególnych sprzedawców (zbiór danych zamówienia.csv).
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Wczytanie danych z pliku CSV, uwzględniając nazwy kolumn
+df = pd.read_csv('zamowienia.csv', sep=';', names=['Kraj', 'Sprzedawca', 'Data zamowienia', 'idZamowienia', 'Utarg'])
+
+# Policzenie liczby zamówień dla każdego sprzedawcy
+orders_per_seller = df['Sprzedawca'].value_counts()
+
+# Stworzenie wykresu słupkowego
+plt.figure(figsize=(10, 6))
+orders_per_seller.plot(kind='bar')
+
+# Ustawienia etykiet osi i tytułu
+plt.xlabel('Sprzedawca')
+plt.ylabel('Liczba zamówień')
+plt.title('Ilość złożonych zamówień przez poszczególnych sprzedawców')
+
+# Wyświetlenie wykresu
+plt.show()
+
